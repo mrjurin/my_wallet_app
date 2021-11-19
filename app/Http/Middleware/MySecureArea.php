@@ -16,7 +16,6 @@ class MySecureArea
      */
     public function handle(Request $request, Closure $next)
     {
-        dd("hello world");
         return $next($request);
     }
 }
