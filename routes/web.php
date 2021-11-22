@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,12 @@ use App\Http\Controllers\TransactionController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('auth')
+    ->group(function(){
+        Route::get('/',[LoginController::class,'login'])->name('login');
+        Route::post('/authenticate',[LoginController::class,'authenticate'])->name('authenticate');
+    });
 
 Route::prefix('txn_types')
       ->group(function(){
@@ -39,3 +47,9 @@ Route::prefix('transaction')
     Route::get('/create',[TransactionController::class,'create'])->name('transaction.create');
     Route::post('/store',[TransactionController::class,'store'])->name('transaction.store');
 });
+
+Route::prefix('user')
+    ->middleware(['auth'])
+    ->group(function(){
+        Route::get('/',[UserController::class,'index'])->name('user');
+    });

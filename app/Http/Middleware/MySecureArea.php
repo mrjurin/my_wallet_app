@@ -16,6 +16,11 @@ class MySecureArea
      */
     public function handle(Request $request, Closure $next)
     {
+       
+        if(1==1){
+            return redirect('https://www.google.com');
+        }
+
         return $next($request);
     }
 }
