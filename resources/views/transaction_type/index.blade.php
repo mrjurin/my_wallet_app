@@ -10,6 +10,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>ID</th>
                                     <th>Description</th>
                                     <th></th>
@@ -18,6 +19,7 @@
                             <tbody>
                                 @forelse ($txn_types as $type)
                                     <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $type->id }}</td>
                                         <td>{{ $type->description}}</td>
                                         <td>

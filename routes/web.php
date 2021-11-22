@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::prefix('txn_types')
       ->group(function(){
 
-            Route::get('/','App\Http\Controllers\TransactionTypeController@index');
+            Route::get('/','App\Http\Controllers\TransactionTypeController@index')->name('txn_types');
             Route::get('/show/{transactionType}','App\Http\Controllers\TransactionTypeController@show');
             Route::get('/create','App\Http\Controllers\TransactionTypeController@create');
             Route::post('/store','App\Http\Controllers\TransactionTypeController@store');

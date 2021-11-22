@@ -44,11 +44,11 @@ class TransactionTypeController extends Controller
         //             ]);
         
         $rules = [
-            'description'=>'required|numeric|min:1|max:3'
+            'description'=>'required'
         ];
 
         $messages = [
-            'description.required'=>'description tu perlu bosku'
+            'description.required'=>'Please provide description'
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
@@ -61,7 +61,7 @@ class TransactionTypeController extends Controller
         }
 
         $created = TransactionType::create($request->except('_token'));
-        return $created ? "successful":"failed";
+        return redirect()->route('txn_types');
         
     }
 
