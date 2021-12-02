@@ -43,7 +43,9 @@
                     </a>
                 </li>
             </ul>
+            
             <ul class="nav-right">
+                @auth
                 <li class="header-notification">
                     <a href="#!">
                         <i class="ti-bell"></i>
@@ -87,10 +89,11 @@
                     </ul>
                 </li>
                 
+                
                 <li class="user-profile header-notification">
                     <a href="#!">
                         <img src="{{ asset('images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                        <span>John Doe</span>
+                        <span>{{ Auth::user()->name }}</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">
@@ -117,6 +120,7 @@
                         </li>
                     </ul>
                 </li>
+                @endauth
             </ul>
         </div>
     </div>

@@ -7,6 +7,8 @@
     <input class="form-control" readonly type="text" name="trans_id" value="{{ $model->trans_id }}">
 </div>
 
+{!! Form::select('size', $transaction_types ,null,['class'=>'form-control'])  !!}
+
 <div class="form-group">
     <label for="">Transaction Type</label>
     <select class="form-control" name="transaction_type_id">

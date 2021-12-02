@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\TransactionType;
 use App\Models\User;
+use Rombituon\Core\Traits\TransactionTrait;
 
 
 class TransactionController extends Controller
 {
+    use TransactionTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +21,18 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::all();
+        return view('transaction.index',compact('transactions'));
+    }
+
+    public function transactionsByAccount($account_id){
+         $transactions = Transaction::transactionsByAccount($account_id)
+                    ->paginate(5);
+         return view('transaction.index',compact('transactions'));
     }
 
     private function getTransTypes(){
-        return TransactionType::pluck('id','description');
+        return TransactionType::pluck('description','id');
     }
 
     private function getReceivers(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -15,6 +16,16 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        //session()->forget('lang');
+
+        //$user_with_accounts = \DB::table('users')
+        //    ->join('accounts as a', 'users.id', '=', 'a.user_id')
+        //    ->select('a.account_name')
+        //    ->get();
+
+        //dd($user_with_accounts);
+
+        //dd(Carbon::yesterday());
         return view('user.index',compact('users'));
     }
 
